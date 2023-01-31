@@ -1,0 +1,83 @@
+/* Custom CSS edits for NC25 */
+
+/* Override global background blur */
+
+* {
+  --filter-background-blur: blur(8px) !important;
+}
+
+/* Disable rounded corners, stretch from edge to edge */
+
+:root {
+    --body-container-margin: 0px;
+    --body-container-radius: 0px;
+}
+
+#content, .content {
+  border-radius:0 !important;
+}
+
+/* Remove margins for the main content area */
+
+#content, .content {
+  margin-left:0 !important;
+  margin-right:0 !important;
+  margin-bottom:0 !important;
+  width:100% !important;
+  height: calc(var(--body-height) + var(--body-container-margin)) !important;
+}
+
+/* Make input element  corners a bit less rounded
+   (may need some additional classes, as I did not check every detail in the UI) */
+
+input, textarea, select, .multiselect__tags, .rich-contenteditable__input {
+  border-radius:4px !important;
+}
+
+/* Fix visual glitches with navigation if there is no background image */
+
+#app-navigation, .app-navigation {
+  -webkit-backdrop-filter: var(--filter-background-blur);
+  backdrop-filter: var(--filter-background-blur);
+}
+
+/* Remove mouse events from quota display in file manager
+   since selecting that element does not do anything */
+
+.app-files #quota {
+  pointer-events:none;
+}
+
+/* Custom styling for markdown editor to have a bit bigger text */
+
+.text-editor__wrapper div.ProseMirror p {
+  font-size:16px;
+}
+
+/* Make active menu item icon red */
+
+.app-menu-main .app-menu-entry.app-menu-entry__active {
+    filter: brightness(20%) sepia(20) saturate(150) hue-rotate(45deg) !important;
+}
+
+/* Main menu and login form */
+/* Colors */
+
+#side-menu, #body-login {background: none;}
+.login-box { background-color: var(--color-main-background-blur); }
+#header, #side-menu  { background-color: rgba(23, 23, 23, 0.8) !important; }
+.menu, .header-menu__wrapper{ background-color: rgba(var(--color-main-background-rgb), 0.3) !important; }
+
+/* Background blur */
+
+#content, #header, .menu, .header-menu__wrapper, #side-menu, #body-login, .login-box {
+  -webkit-backdrop-filter: var(--filter-background-blur);
+  backdrop-filter: var(--filter-background-blur);
+}
+
+/* Remove frame around logo on login form */
+
+#body-login #header {
+   background: transparent !important;
+   backdrop-filter: none;
+}
